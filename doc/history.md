@@ -1,7 +1,10 @@
+## 1.3.1
+* expose states and models
+
 ## 1.3.0
 
 * 1.16 support (thanks @DrakoTrogdor)
-* black states and models (thanks @Karang)
+* block states and models (thanks @Karang)
 
 ## 1.2.0
 
