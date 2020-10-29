@@ -26,6 +26,6 @@
   "homepage": "https://github.com/rom1504/node-minecraft-assets#readme",
   "devDependencies": {
     "require-self": "^0.2.3",
-    "standard": "^15.0.0"
+    "standard": "^16.0.0"
   }
 }
