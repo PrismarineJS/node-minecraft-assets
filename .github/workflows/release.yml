@@ -12,7 +12,8 @@ jobs:
       - name: Update minecraft assets
         run: cd minecraft-assets/ && git fetch --all --tags && git checkout ${{ github.event.client_payload.tag }}
       - name: Update package.json
-        run: sed -i -E 's/^  "version": "[0-9]+\.[0-9]+\.[0-9]+"/  "version": "${{ github.event.client_payload.tag }}"/g' package.json
+        run: >
+          sed -i -E 's/^  "version": "[0-9]+\.[0-9]+\.[0-9]+"/  "version": "${{ github.event.client_payload.tag }}"/g' package.json
       - name: Update doc/history.md
         run: echo -e "## ${{ github.event.client_payload.tag }}\n* update mcassets\n\n$(cat doc/history.md)" > doc/history.md
       - name: Create commits
