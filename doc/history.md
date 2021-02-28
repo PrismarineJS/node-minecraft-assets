@@ -1,3 +1,6 @@
+## 1.7.0
+* update mcassets
+
 ## 1.6.0
 * fix water and lava in <1.13 (@Karang)
 
