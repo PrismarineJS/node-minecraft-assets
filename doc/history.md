@@ -1,3 +1,6 @@
+## 1.8.2
+* add 1.17.1 to the versions list (@AppDevMichael)
+
 ## 1.8.1
 * update mcassets
 
