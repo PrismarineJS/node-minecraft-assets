@@ -66,7 +66,7 @@ module.exports = function (mcVersion) {
     }
     if (!(item in absoluteCache[majorVersion])) {
       const imgPath = path.join(__dirname, 'minecraft-assets', 'data', majorVersion, 'items', fixedName + '.png')
-      absoluteCache[majorVersion][item] = fs.existsSync(imgPath) ? fs.readFileSync(imgPath) : assets.textureContent[item.name].texture
+      absoluteCache[majorVersion][item] = fs.existsSync(imgPath) ? fs.readFileSync(imgPath) : assets.getTexture(item.name)
     }
     return absoluteCache[majorVersion][item]
   }
