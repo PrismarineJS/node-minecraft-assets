@@ -3,6 +3,24 @@ const fs = require('fs')
 const path = require('path')
 const cache = {} // prevent reindexing when requiring multiple time the same version
 const absoluteCache = {}
+const displayNameMapping = {
+  'Bonemeal White': 'dye_powder_white',
+  'Ink Black': 'dye_powder_black',
+  'Cocoa Brown': 'dye_powder_brown',
+  'Rose Red': 'dye_powder_red',
+  'Cactus Green': 'dye_powder_green',
+  'Lapis Lazuli': 'dye_powder_blue',
+  'Dandelion Yellow': 'dye_powder_yellow',
+  Gray: 'dye_powder_gray',
+  'Light Gray': 'dye_powder_light_gray',
+  Orange: 'dye_powder_orange',
+  Lime: 'dye_powder_lime',
+  'Light Blue': 'dye_powder_light_blue',
+  Cyan: 'dye_powder_cyan',
+  Pink: 'dye_powder_pink',
+  Purple: 'dye_powder_purple',
+  Magenta: 'dye_powder_magenta'
+}
 
 function getVersion (mcVersion) {
   if (cache[mcVersion]) { return cache[mcVersion] }
@@ -33,45 +51,31 @@ module.exports = function (mcVersion) {
   if (!(majorVersion in absoluteCache)) {
     absoluteCache[majorVersion] = {}
   }
-  assets.getAbsoluteTexture = (item, fixName = true) => {
-    let fixedName = !fixName
-      ? item.name
-      : item.name
+  assets.getAbsoluteTexture = async (item, fixName = true) => {
+    if (typeof assets.customItemGetter === 'function') {
+      const res = await assets.customItemGetter(item)
+      if (res !== null) return res
+    }
+    let fixedName = item.name
+    if (fixName) {
+      fixedName = fixedName
         .replace(/compass_\d+/, 'compass_00')
         .replace(/clock_\d+/, 'clock_00')
         .replace(/(.+)_door/, 'door_$1')
         .replace('wood', 'wooden')
         .replace('armor_stand', 'wooden_armorstand')
-
-    const displayNameMapping = {
-      'Bonemeal White': 'dye_powder_white',
-      'Ink Black': 'dye_powder_black',
-      'Cocoa Brown': 'dye_powder_brown',
-      'Rose Red': 'dye_powder_red',
-      'Cactus Green': 'dye_powder_green',
-      'Lapis Lazuli': 'dye_powder_blue',
-      'Dandelion Yellow': 'dye_powder_yellow',
-      Gray: 'dye_powder_gray',
-      'Light Gray': 'dye_powder_light_gray',
-      Orange: 'dye_powder_orange',
-      Lime: 'dye_powder_lime',
-      'Light Blue': 'dye_powder_light_blue',
-      Cyan: 'dye_powder_cyan',
-      Pink: 'dye_powder_pink',
-      Purple: 'dye_powder_purple',
-      Magenta: 'dye_powder_magenta'
+      if (item.displayName in displayNameMapping) {
+        fixedName = displayNameMapping[item.displayName]
+      }
     }
-    if (item.displayName in displayNameMapping) {
-      fixedName = displayNameMapping[item.displayName]
-    }
-    if (!(item in absoluteCache[majorVersion])) {
+    if (!(fixedName in absoluteCache[majorVersion])) {
       const imgPath = path.join(__dirname, 'minecraft-assets', 'data', majorVersion, 'items', fixedName + '.png')
-      absoluteCache[majorVersion][item] = fs.existsSync(imgPath) ? fs.readFileSync(imgPath) : assets.getTexture(item.name)
+      absoluteCache[majorVersion][fixedName] = fs.existsSync(imgPath) ? fs.readFileSync(imgPath) : assets.getTexture(item.name)
     }
-    return absoluteCache[majorVersion][item]
+    return absoluteCache[majorVersion][fixedName]
   }
-  assets.getTexture = item => {
-    return assets.textureContent[item.name].texture
+  assets.getTexture = name => {
+    return assets.textureContent[name].texture
   }
   return assets
 }
