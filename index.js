@@ -1,5 +1,5 @@
 const mcDataToNode = require('./lib/loader')
-const fs = require('fs')
+const fsp = require('fs').promises
 const path = require('path')
 const cache = {} // prevent reindexing when requiring multiple time the same version
 const absoluteCache = {}
@@ -20,6 +20,12 @@ const displayNameMapping = {
   Pink: 'dye_powder_pink',
   Purple: 'dye_powder_purple',
   Magenta: 'dye_powder_magenta'
+}
+
+async function checkFileExists (file) {
+  return await fsp.access(file, fsp.F_OK)
+    .then(() => true)
+    .catch(() => false)
 }
 
 function getVersion (mcVersion) {
@@ -64,13 +70,28 @@ module.exports = function (mcVersion) {
         .replace(/(.+)_door/, 'door_$1')
         .replace('wood', 'wooden')
         .replace('armor_stand', 'wooden_armorstand')
+      if (item.name === 'concrete') {
+        fixedName = { 0: 'concrete_white', 1: 'concrete_orange', 2: 'concrete_magenta', 3: 'concrete_light_blue', 4: 'concrete_yellow', 5: 'concrete_lime', 6: 'concrete_pink', 7: 'concrete_gray', 8: 'concrete_light_gray', 9: 'concrete_cyan', 10: 'concrete_purple', 11: 'concrete_blue', 12: 'concrete_brown', 13: 'concrete_green', 14: 'concrete_red', 15: 'black_concrete' }[item.metadata]
+      } else if (item.name === 'concrete_powder') {
+        fixedName = { 0: 'concrete_powder_white', 1: 'concrete_powder_orange', 2: 'concrete_powder_magenta', 3: 'concrete_powder_light_blue', 4: 'concrete_powder_yellow', 5: 'concrete_powder_lime', 6: 'concrete_powder_pink', 7: 'concrete_powder_gray', 8: 'concrete_powder_light_gray', 9: 'concrete_powder_cyan', 10: 'concrete_powder_purple', 11: 'concrete_powder_blue', 12: 'concrete_powder_brown', 13: 'concrete_powder_green', 14: 'concrete_powder_red', 15: 'black_concrete_powder' }[item.metadata]
+      }
       if (item.displayName in displayNameMapping) {
         fixedName = displayNameMapping[item.displayName]
       }
     }
     if (!(fixedName in absoluteCache[majorVersion])) {
-      const imgPath = path.join(__dirname, 'minecraft-assets', 'data', majorVersion, 'items', fixedName + '.png')
-      absoluteCache[majorVersion][fixedName] = fs.existsSync(imgPath) ? fs.readFileSync(imgPath) : assets.getTexture(item.name)
+      const makePath = x => path.join(__dirname, 'minecraft-assets', 'data', majorVersion, x, fixedName + '.png')
+      const itemPath = makePath('items')
+      const blockPath = makePath('blocks')
+      let img = null
+      if (await checkFileExists(itemPath)) {
+        img = fsp.readFile(itemPath)
+      } else if (await checkFileExists(blockPath)) {
+        img = fsp.readFile(blockPath)
+      } else {
+        img = assets.getTexture(item.name)
+      }
+      absoluteCache[majorVersion][fixedName] = img
     }
     return absoluteCache[majorVersion][fixedName]
   }
