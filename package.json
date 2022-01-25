@@ -1,6 +1,6 @@
 {
   "name": "minecraft-assets",
-  "version": "1.8.2",
+  "version": "1.9.0",
   "description": "Provide minecraft assets",
   "main": "index.js",
   "tonicExampleFilename": "example.js",
