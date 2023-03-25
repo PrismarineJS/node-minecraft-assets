@@ -12,7 +12,7 @@ const data = {
       blocksModels: require('./minecraft-assets/data/1.8.8/blocks_models')
     },
     1.9: {
-      directory: path.join(__dirname, './minecraft-assets/data/1.8.9/'),
+      directory: path.join(__dirname, './minecraft-assets/data/1.9/'),
       blocksTextures: require('./minecraft-assets/data/1.9/blocks_textures'),
       itemsTextures: require('./minecraft-assets/data/1.9/items_textures'),
       textureContent: require('./minecraft-assets/data/1.9/texture_content'),
@@ -112,10 +112,6 @@ const data = {
 
 Object.assign(data, {
   bedrock: {
-    '1.16.220': data.pc['1.16.1'],
-    '1.17.10': data.pc['1.17.1'],
-    '1.17.40': data.pc['1.17.1'],
-    '1.18.0': data.pc['1.18.1'],
     '1.19.1': data.pc['1.18.1']
   }
 })
@@ -140,4 +136,4 @@ module.exports = function (registry) {
   const updated = cache[v.type][v.minecraftVersion] = mcDataToNode(assets, registry)
   return updated
 }
-module.exports.versions = byMajor
+module.exports.versions = { pc: Object.keys(data.pc), bedrock: Object.keys(data.bedrock) }
