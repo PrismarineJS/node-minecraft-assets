@@ -106,13 +106,20 @@ const data = {
       textureContent: require('./minecraft-assets/data/1.18.1/texture_content'),
       blocksStates: require('./minecraft-assets/data/1.18.1/blocks_states'),
       blocksModels: require('./minecraft-assets/data/1.18.1/blocks_models')
+    },
+    '1.19.1': {
+      blocksTextures: require('./minecraft-assets/data/1.19.1/blocks_textures'),
+      itemsTextures: require('./minecraft-assets/data/1.19.1/items_textures'),
+      textureContent: require('./minecraft-assets/data/1.19.1/texture_content'),
+      blocksStates: require('./minecraft-assets/data/1.19.1/blocks_states'),
+      blocksModels: require('./minecraft-assets/data/1.19.1/blocks_models')
     }
   }
 }
 
 Object.assign(data, {
   bedrock: {
-    '1.19.1': data.pc['1.18.1']
+    '1.19.1': data.pc['1.19.1']
   }
 })
 
