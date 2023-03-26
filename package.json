@@ -7,7 +7,6 @@
   "scripts": {
     "test": "npm run lint && mocha --bail --exit",
     "lint": "standard",
-    "postinstall": "git submodule update --init",
     "fix": "standard --fix"
   },
   "repository": {
