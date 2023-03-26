@@ -108,6 +108,7 @@ const data = {
       blocksModels: require('./minecraft-assets/data/1.18.1/blocks_models')
     },
     '1.19.1': {
+      directory: path.join(__dirname, './minecraft-assets/data/1.19.1/'),
       blocksTextures: require('./minecraft-assets/data/1.19.1/blocks_textures'),
       itemsTextures: require('./minecraft-assets/data/1.19.1/items_textures'),
       textureContent: require('./minecraft-assets/data/1.19.1/texture_content'),
