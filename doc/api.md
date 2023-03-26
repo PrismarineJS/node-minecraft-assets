@@ -10,6 +10,14 @@ blocks textures by name
 
 array of blocks textures
 
+### blocksModels
+
+map of block variant => model
+
+### blockStates
+
+array of block states
+
 ## Items
 
 ### items
@@ -29,6 +37,10 @@ texture content by name
 ### textureContentArray
 
 array of texture content
+
+### blockStateVariantsByStateId
+
+Returns an array of block model variants mapped by block state ID, lookup with .blocksModels field
 
 ## version
 
