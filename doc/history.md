@@ -1,3 +1,6 @@
+## 1.12.1
+* update mcassets
+
 ## 1.9.1
 * update mcassets
 
