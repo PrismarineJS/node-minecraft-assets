@@ -1,3 +1,7 @@
+## 1.12.2
+* [Create commands.yml](https://github.com/PrismarineJS/node-minecraft-assets/commit/22197c769780ef7d0b94bf0db39a7d168199a154) (thanks @rom1504)
+* [Add 1.20.2 to index.js](https://github.com/PrismarineJS/node-minecraft-assets/commit/3a7e634fa5d47d690029c14e20eba909e43f2b7d) (thanks @rom1504)
+
 ## 1.12.1
 * update mcassets
 
