@@ -131,6 +131,7 @@ Object.assign(data, {
   }
 })
 
+// Get {'1.18': ['1.18', '1.18.1', ...]} from ['1.18', '1.18.1', ...]
 const reduce = (what) => what.reduce((acc, cur) => {
   const major = cur.split('.').slice(0, 2).join('.')
   const arr = acc[major] = acc[major] || []
@@ -139,6 +140,8 @@ const reduce = (what) => what.reduce((acc, cur) => {
 }, {})
 
 const cache = { pc: {}, bedrock: {} } // prevent reindexing when requiring multiple time the same version
+const byMajor = { pc: reduce(Object.keys(data.pc)), bedrock: reduce(Object.keys(data.bedrock)) }
+const lastOfMajor = (type, major) => byMajor[type][major][byMajor[type][major].length - 1]
 
 module.exports = function (registry) {
   if (typeof registry === 'string') registry = require('prismarine-registry')(registry)
