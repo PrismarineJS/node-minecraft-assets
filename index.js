@@ -1,6 +1,5 @@
 const mcDataToNode = require('./lib/loader')
 const path = require('path')
-const cache = { pc: {}, bedrock: {} } // prevent reindexing when requiring multiple time the same version
 const data = {
   pc: {
     '1.8.8': {
@@ -114,25 +113,32 @@ const data = {
       textureContent: require('./minecraft-assets/data/1.19.1/texture_content'),
       blocksStates: require('./minecraft-assets/data/1.19.1/blocks_states'),
       blocksModels: require('./minecraft-assets/data/1.19.1/blocks_models')
+    },
+    '1.20.2': {
+      blocksTextures: require('./minecraft-assets/data/1.20.2/blocks_textures'),
+      itemsTextures: require('./minecraft-assets/data/1.20.2/items_textures'),
+      textureContent: require('./minecraft-assets/data/1.20.2/texture_content'),
+      blocksStates: require('./minecraft-assets/data/1.20.2/blocks_states'),
+      blocksModels: require('./minecraft-assets/data/1.20.2/blocks_models')
     }
   }
 }
 
 Object.assign(data, {
   bedrock: {
-    '1.19.1': data.pc['1.19.1']
+    '1.19.1': data.pc['1.19.1'],
+    '1.20.0': data.pc['1.20.2']
   }
 })
 
-const reduce = what => what.reduce((acc, cur) => {
+const reduce = (what) => what.reduce((acc, cur) => {
   const major = cur.split('.').slice(0, 2).join('.')
   const arr = acc[major] = acc[major] || []
   arr.push(cur)
   return acc
 }, {})
 
-const byMajor = { pc: reduce(Object.keys(data.pc)), bedrock: reduce(Object.keys(data.bedrock)) }
-const lastOfMajor = (type, major) => byMajor[type][major][byMajor[type][major].length - 1]
+const cache = { pc: {}, bedrock: {} } // prevent reindexing when requiring multiple time the same version
 
 module.exports = function (registry) {
   if (typeof registry === 'string') registry = require('prismarine-registry')(registry)
