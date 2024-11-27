@@ -141,7 +141,7 @@ const data = {
     textureContent: require('./minecraft-assets/data/1.21.1/texture_content'),
     blocksStates: require('./minecraft-assets/data/1.21.1/blocks_states'),
     blocksModels: require('./minecraft-assets/data/1.21.1/blocks_models')
-  },
+  }
 }
 
 module.exports.versions = Object.keys(data)
