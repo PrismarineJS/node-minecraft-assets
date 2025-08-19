@@ -1,4 +1,7 @@
 ## 1.15.0
+* update mcassets
+
+## 1.15.0
 * [1.21.4 (#37)](https://github.com/PrismarineJS/node-minecraft-assets/commit/4c9d01215e8ffd617f10c2f3ba5fe784d33e5c43) (thanks @SuperGamerTron)
 
 ## 1.14.0
