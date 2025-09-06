@@ -1,3 +1,6 @@
+## 1.17.0
+* [Add assets for 1.21.5-1.218 versions (#45)](https://github.com/PrismarineJS/node-minecraft-assets/commit/2ebaa485c1bcb5bfba5ffa1fca79b9e1fb4af967) (thanks @bedrock-bot)
+
 ## 1.16.0
 * update mcassets
 
