@@ -148,6 +148,34 @@ const data = {
     textureContent: require('./minecraft-assets/data/1.21.4/texture_content'),
     blocksStates: require('./minecraft-assets/data/1.21.4/blocks_states'),
     blocksModels: require('./minecraft-assets/data/1.21.4/blocks_models')
+  },
+  '1.21.5': {
+    blocksTextures: require('./minecraft-assets/data/1.21.5/blocks_textures'),
+    itemsTextures: require('./minecraft-assets/data/1.21.5/items_textures'),
+    textureContent: require('./minecraft-assets/data/1.21.5/texture_content'),
+    blocksStates: require('./minecraft-assets/data/1.21.5/blocks_states'),
+    blocksModels: require('./minecraft-assets/data/1.21.5/blocks_models')
+  },
+  '1.21.6': {
+    blocksTextures: require('./minecraft-assets/data/1.21.6/blocks_textures'),
+    itemsTextures: require('./minecraft-assets/data/1.21.6/items_textures'),
+    textureContent: require('./minecraft-assets/data/1.21.6/texture_content'),
+    blocksStates: require('./minecraft-assets/data/1.21.6/blocks_states'),
+    blocksModels: require('./minecraft-assets/data/1.21.6/blocks_models')
+  },
+  '1.21.7': {
+    blocksTextures: require('./minecraft-assets/data/1.21.7/blocks_textures'),
+    itemsTextures: require('./minecraft-assets/data/1.21.7/items_textures'),
+    textureContent: require('./minecraft-assets/data/1.21.7/texture_content'),
+    blocksStates: require('./minecraft-assets/data/1.21.7/blocks_states'),
+    blocksModels: require('./minecraft-assets/data/1.21.7/blocks_models')
+  },
+  '1.21.8': {
+    blocksTextures: require('./minecraft-assets/data/1.21.8/blocks_textures'),
+    itemsTextures: require('./minecraft-assets/data/1.21.8/items_textures'),
+    textureContent: require('./minecraft-assets/data/1.21.8/texture_content'),
+    blocksStates: require('./minecraft-assets/data/1.21.8/blocks_states'),
+    blocksModels: require('./minecraft-assets/data/1.21.8/blocks_models')
   }
 }
 
