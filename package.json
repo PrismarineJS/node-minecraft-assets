@@ -8,7 +8,7 @@
     "test": "npm run lint",
     "lint": "standard",
     "fix": "standard --fix",
-    "prepare": "npm install require-self && require-self"
+    "prepare": "node bin/ensure_minecraft_assets.js && npm install require-self && require-self"
   },
   "repository": {
     "type": "git",
