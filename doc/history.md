@@ -1,3 +1,6 @@
+## 1.17.0
+* update mcassets
+
 ## 1.18.0
 * [Update CI to Node 24 (#49)](https://github.com/PrismarineJS/node-minecraft-assets/commit/6ca5292bd1655263545d2e3b286b8b7d7dbe2292) (thanks @rom1504)
 * [Fix publish condition for npm-publish v4 (#48)](https://github.com/PrismarineJS/node-minecraft-assets/commit/a1533d5a77d7574ef26587b4da7bdb27f66d48d7) (thanks @rom1504)
