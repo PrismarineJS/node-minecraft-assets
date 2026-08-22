@@ -1,3 +1,7 @@
+## 1.19.0
+* [Add 26.1 to the version index (#54)](https://github.com/PrismarineJS/node-minecraft-assets/commit/ecabdf2813896adae4e2ee40547867d5ede2466f) (thanks @u9g)
+* [fix: point package.json URLs at the PrismarineJS org](https://github.com/PrismarineJS/node-minecraft-assets/commit/76f428abf5d6faec867b08d14d2874803777bb6f) (thanks @rom1504)
+
 ## 1.18.0
 * update mcassets
 * [Update CI to Node 24 (#49)](https://github.com/PrismarineJS/node-minecraft-assets/commit/6ca5292bd1655263545d2e3b286b8b7d7dbe2292) (thanks @rom1504)
